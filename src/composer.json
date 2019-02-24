@@ -1,0 +1,34 @@
+{
+	"name": "hgacreative/hga-laravel-preset",
+	"description": "The default Laravel presets for HGA-based applications",
+	"keywords": ["laravel", "hgacreative"],
+	"license": "MIT",
+	"authors": [
+        {
+    		"name": "Ian Austin",
+    		"email": "Ian.Austin@hgacreative.com"
+        }
+    ],
+	"require": {
+		"doctrine/dbal": "*",
+		"guzzlehttp/guzzle": "*",
+		"laravel/passport": "*"
+	},
+	"require-dev": {
+		"barryvdh/laravel-debugbar": "*"
+	},
+	"autoload": {
+		"psr-4": {
+			"Hgacreative\\HgaLaravelPreset\\": "src/"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Hgacreative\\HgaLaravelPreset\\HgaServiceProvider"
+			]
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}

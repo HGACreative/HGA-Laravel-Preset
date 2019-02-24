@@ -1,0 +1,65 @@
+// Enviroment
+$website_url: "";
+$theme_dir: '/';
+
+// Colours
+$white: #fff;
+$black: #333;
+$grey: darken($white, 15%);
+$green: #6bc61e;
+$yellow: #FBBB4E;
+$red: #F95858;
+$hyperlink: #00F;
+
+$brand-primary: $black !default;
+$brand-secondary: $black !default;
+$brand-success: $green !default;
+$brand-warning: $yellow !default;
+$brand-error: $red !default;
+
+$branding: (
+    // For iterating
+    primary: $brand-primary,
+    secondary: $brand-secondary,
+    success: $brand-success,
+    warning: $brand-warning,
+    error: $brand-error,
+    neutral: $grey,
+);
+
+$background: $white;
+$text-color: $black;
+$url: $hyperlink;
+
+// Breakpoints and grid
+$xs: 540px;
+$sm: 720px;
+$md: 960px;
+$lg: 1140px;
+
+$columns: 12;
+
+$gutter-base: 15px;
+$gutter-sm: 7.5px;
+$gutter-lg: 30px;
+$gutter-xl: 60px;
+
+// Fonts
+$font-family-base: "Helvetica Neue, Helvetica, Arial, sans-serif;";
+$font-awesome: "Font Awesome 5 Free";
+$font-size-large: 17px;
+$font-size-base: 15px;
+$font-size-small: 14px;
+$font-size-smaller: 11px;
+
+$line-height-base: 1.6;
+
+$font-size-h1: 24px;
+$font-size-h2: 20px;
+$font-size-h3: 17px;
+$font-size-h4: 14px;
+$font-size-h5: 14px;
+$font-size-h6: 10px;
+
+// Radius
+$border-radius-base: 4px;

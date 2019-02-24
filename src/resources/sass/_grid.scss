@@ -1,0 +1,71 @@
+@import "vars";
+
+%column-styles {
+	padding: 0px $gutter-base;
+	float: left;
+	box-sizing: border-box;
+	max-width: 100%;
+	width: 100%;
+	position: relative;
+}
+
+// generate grid classes
+$class-map: ( xs: $xs, sm: $sm, md: $md, lg: $lg );
+
+@each $key,$value in $class-map {
+
+	@for $i from 1 through $columns {
+		.#{$key}#{$i} { // styles applied to ALL column classes
+			@extend %column-styles;
+		}
+	}
+
+	@media (min-width: $value) {
+		$i: 1;
+		@while $i <= $columns {
+			.#{$key}#{$i} { // grid (.xs12)
+				width: ($i / $columns) * 100%;
+			}
+			.#{$key}offset#{$i} { // offset (.xsoffset12)
+				margin-left: ($i / $columns) * 100%;
+			}
+			.#{$key}push#{$i} { // push (.xspush12)
+				left: ($i / $columns) * 100%;
+			}
+			.#{$key}pull#{$i} { // pull (.xspull12)
+				right: ($i / $columns) * 100%;
+			}
+			$i: $i + 1;
+		}
+	}
+
+}
+
+.xs5s,
+.sm5s,
+.md5s,
+.lg5s {
+    @extend %column-styles;
+}
+
+.xs5s {
+    width: 20%;
+}
+
+@media (min-width: $sm) {
+    .sm5s {
+        width: 20%;
+    }
+}
+
+@media (min-width: $md) {
+    .md5s {
+        width: 20%;
+    }
+}
+
+@media (min-width: $lg) {
+    .lg5s {
+        width: 20%;
+    }
+}

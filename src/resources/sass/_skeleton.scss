@@ -1,0 +1,258 @@
+/*
+* Skeleton V2.0.4
+* Copyright 2014, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 12/29/2014
+*/
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+- Grid
+- Base Styles
+- Typography
+- Links
+- Buttons
+- Forms
+- Lists
+- Code
+- Tables
+- Spacing
+- Utilities
+- Clearing
+- Media Queries
+*/
+
+/* Grid
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.container {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 $gutter-base;
+	box-sizing: border-box;
+	@media (min-width: $xs) {
+		width: 100%;
+	}
+	@media (min-width: $sm) {
+		width: $sm;
+	}
+	@media (min-width: $md) {
+		width: $md;
+	}
+	@media (min-width: $lg) {
+		width: $lg;
+	}
+}
+
+.container-fluid {
+	width: 100%;
+	margin: auto;
+	padding: 0 $gutter-base;
+}
+
+.row {
+	margin: 0 (-$gutter-base);
+}
+
+.hidden-xs {
+	@media (max-width: $xs) {
+		display: none !important;
+	}
+}
+
+.hidden-sm {
+	@media (min-width: $xs) and (max-width: $sm) {
+		display: none !important;
+	}
+}
+
+.hidden-md {
+	@media (min-width: $sm) and (max-width: $md) {
+		display: none !important;
+	}
+}
+
+.hidden-lg {
+	@media (min-width: $lg) {
+		display: none !important;
+	}
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+// use grid.scss for columns
+
+/* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+	touch-action: manipulation;
+}
+
+html {
+	background: $background;
+	height: 100%;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-size: $font-size-base;
+	line-height: $line-height-base;
+	font-weight: 400;
+	font-family: $font-family-base;
+	color: $text-color;
+	overflow-x: hidden;
+	margin: 0;
+	font-weight: 300;
+	transition: margin-left .4s;
+
+	&.error,
+	&.login {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		background: url("/images/logo-emboss.png");
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: 80%;
+
+		#app {
+			width: 100%;
+		}
+		@include to-width($sm) {
+			display: block;
+			margin-top: 50px;
+
+			#app {
+				margin-left: 0;
+
+				aside.aside-left {
+					width: 100%;
+					position: relative;
+					display: flex;
+					justify-content: center;
+					padding: 20px;
+
+					.aside__section {
+						padding: 0;
+					}
+				}
+			}
+		}
+	}
+
+	&.no-scroll {
+		overflow: hidden !important;
+	}
+}
+
+main {
+	display: block;
+}
+
+a {
+	cursor: pointer !important;
+	@include states() {
+		cursor: pointer !important;
+	}
+
+	&.disabled,
+	&[disabled] {
+		cursor: not-allowed !important;
+		text-decoration: line-through;
+		color: lighten($url, 60) !important;
+		@include states() {
+			color: lighten($url, 60) !important;
+		}
+	}
+}
+
+/* Utilities
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.disabled {
+	pointer-events: none;
+	opacity: .3;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.align-center {
+	margin: auto;
+}
+
+.align-right {
+	margin-left: auto;
+}
+
+.align-left {
+	margin-right: auto;
+}
+
+.screen-reader-only,
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	border: 0;
+}
+
+.no-list-style {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.no-padding {
+	padding: 0 !important;
+}
+
+.mgb {
+	margin-bottom: 15px !important;
+
+	&--sm {
+		margin-bottom: 10px !important;
+	}
+
+	&--lg {
+		margin-bottom: 30px !important;
+	}
+}
+/* Misc
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+hr {
+	margin-top: $gutter-lg;
+	margin-bottom: $gutter-lg;
+	border-width: 0;
+	border-top: 1px solid $grey;
+}
+
+/* Clearing
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Self Clearing Goodness */
+.container:after,
+.row:after,
+.u-cf {
+	content: "";
+	display: table;
+	clear: both;
+}

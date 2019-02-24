@@ -1,0 +1,154 @@
+/*
+|
+| By default you shouldn't really need to add any mixins in here, there are
+| lots of options and controls that should adequately allow you to build
+| a website's styles with minimal effort and maximum efficiency.  However,
+| sometimes a particular website may require additional functionality at
+| this stage.
+|
+*/
+
+// Animation mixin
+@mixin svg($img) {
+    background-image: url("#{$website_url+$theme_dir}/images/"+$img+".png");
+    background-image: url("#{$website_url+$theme_dir}/images/"+$img+".svg"), none;
+}
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin placeholder {
+	&::-webkit-input-placeholder {@content}
+	&:-moz-placeholder           {@content}
+	&::-moz-placeholder          {@content}
+	&:-ms-input-placeholder      {@content}
+}
+
+@mixin expand($name,$value...){
+ 	-webkit-#{$name}: $value;
+	-moz-#{$name}: $value;
+ 	#{$name}: $value;
+}
+
+@mixin radius ($radius) {
+	@warn "Consider using Autoprefixer rather than mixins for this";
+	@include expand (border-radius, $radius);
+	@include piePolyFill();
+}
+
+@mixin box-shadow($shadows...) {
+	@warn "Consider using Autoprefixer rather than mixins for this";
+	@include expand (box-shadow, $shadows);
+}
+
+@mixin box-sizing ($sizing) {
+	@warn "Consider using Autoprefixer rather than mixins for this";
+	@include expand (box-sizing, $sizing);
+}
+
+@mixin appearance ($appearance) {
+	@include expand (appearance, $appearance);
+    &::-ms-expand {
+        display: $appearance;
+    }
+}
+
+@mixin remFontSizeWithFallback($sizeInRems) {
+  	font-size: #{$sizeInRems * 16}px;
+  	font-size: #{$sizeInRems}rem;
+}
+
+@mixin replaceTextByImage($url,$width,$height){
+	width: $width;
+ 	height: $height;
+	background: url("#{$website_url + $theme_dir}/images/"+$url) no-repeat;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+@mixin ico($img,$size:initial,$position:0 0,$color:transparent,$repeat: no-repeat) {
+	text-indent:100%;
+    	background: {
+    		color: $color;
+    		image: url("#{$website_url+$theme_dir}/images/"+$img+".png");
+        	image: url("#{$website_url+$theme_dir}/images/"+$img+".svg"), none;
+        	position: $position;
+        	repeat: $repeat;
+        	size: $size;
+    	}
+}
+
+@mixin clearfix(){
+  	&:after{
+    		clear: both;
+		content: ".";
+		display: block;
+		height: 0;
+		visibility: hidden;
+  	}
+}
+
+@mixin from-width($width) {
+	@media (min-width: $width) {
+		@content;
+	}
+}
+
+@mixin to-width($width) {
+	@media (max-width: $width) {
+		@content;
+	}
+}
+
+@mixin states() {
+	&:hover, &:focus {
+		@content
+	}
+}
+
+@function em-calc($target, $context: $font-size-base) {
+  	@if $target == 0 { @return 0 }
+  	@return $target / $context + 0em;
+}
+
+%accessibility {
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+	padding: 0!important;/* IE6, IE7 */
+	line-height: 0;/* IE6, IE7 */
+	text-indent: -9000px;/* IE6, IE7 */
+}
