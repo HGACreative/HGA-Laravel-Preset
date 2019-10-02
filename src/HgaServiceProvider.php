@@ -20,7 +20,7 @@ class HgaServiceProvider extends ServiceProvider
 
             $command->info('Application configured as an HGACreative application.');
             $command->info('Go make something beautiful, "Challenge The Ordinary".');
-            $command->error('Now run "npm install --save" and compile your packages!');
+            $command->error('Now run "npm install --save" and then compile you assets with "npm run dev"!');
         });
     }
 

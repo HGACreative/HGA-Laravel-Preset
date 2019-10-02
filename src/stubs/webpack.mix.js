@@ -1,18 +1,29 @@
 const mix = require('laravel-mix');
 
-// https://laravel-mix.com/extensions/polyfill
-require('laravel-mix-polyfill');
-
-// https://github.com/scottcharlesworth/laravel-mix-polyfill/issues/15
-// https://warlord0blog.wordpress.com/2018/08/01/i-hate-internet-explorer/
-const TargetsPlugin = require('targets-webpack-plugin');
+/*
+ |--------------------------------------------------------------------------
+ | Mix Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Mix provides a clean, fluent API for defining some Webpack build steps
+ | for your Laravel application. By default, we are compiling the Sass
+ | file for the application as well as bundling up all the JS files.
+ |
+ */
 
 mix.webpackConfig({
-        plugins: [
-            new TargetsPlugin({
-                browsers: ['last 2 versions', 'chrome >= 41', 'IE 11'],
-            }),
-        ],
+        module: {
+            rules: [{
+                test: /\.jsx?$/,
+                exclude: /('')/,
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'] // npm install --save-dev @babel/preset-env
+                    }
+                }]
+            }]
+        },
         resolve: {
             alias: {
                 RootJsDir: path.resolve(__dirname, 'resources', 'js'),
@@ -23,14 +34,5 @@ mix.webpackConfig({
     })
     .js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .polyfill({
-        enabled: true,
-        useBuiltIns: "usage",
-        targets: {
-            "firefox": "50",
-            "ie": 11
-        },
-        corejs: 3
-    })
     .version()
-    .extract(['vue', 'axios', 'laravel-mix-polyfill', 'targets-webpack-plugin']);
+    .extract(['vue', 'axios']);

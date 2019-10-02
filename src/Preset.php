@@ -7,6 +7,7 @@ use Illuminate\Foundation\Console\PresetCommand;
 use Illuminate\Foundation\Console\Presets\Preset as LaravelPreset;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\File;
 
@@ -290,7 +291,8 @@ class Preset extends LaravelPreset
             'es6-promise' => '*',
             'sass' => '*',
             'sass-loader' => '*',
-            'vue-template-compiler' => '*'
+            'vue' => '*',
+            'vue-template-compiler' => '*',
         ],
         Arr::except($packages, [
             'bootstrap',
@@ -495,7 +497,7 @@ class Preset extends LaravelPreset
         // if a sub directory to copy to has been specified
         if($subDir) {
             // check if there's a trailing slash
-            $subDir = ends_with($subDir, '/')
+            $subDir = Str::endsWith($subDir, '/')
                 ? $subDir
                 : $subDir.'/';
         }
