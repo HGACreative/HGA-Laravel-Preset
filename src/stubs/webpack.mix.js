@@ -23,4 +23,4 @@ mix.webpackConfig({
     .js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .version()
-    .extract(['vue', 'axios', 'laravel-mix-polyfill', 'targets-webpack-plugin']);
+    .extract(['vue', 'axios']);
