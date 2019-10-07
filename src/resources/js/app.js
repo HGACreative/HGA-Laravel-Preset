@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -32,6 +31,8 @@ window.Vue = require('vue');
  * This is an example of how you would declare a component, you would utilise this by placing <example-component /> in your blade file
  */
 //import exampleComponent from 'ComponentsDir/Utilities/ExampleComponent
+
+require('es6-promise').polyfill();
 
 const app = new Vue({
     el: '#app',
